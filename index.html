@@ -8,11 +8,12 @@
 </head>
 
 <body>
-  <div id="root"></div>
+  <div id="root">
+    <router-view></router-view>
+  </div>
+  <!--<script src="https://cdn.bootcss.com/vue/2.2.6/vue.js"></script>-->
   <script>
-    var script = document.createElement('script');
-    script.src = 'http://localhost:2000/index.js';
-    document.body.appendChild(script);
+    console.log('dirname:', __dirname)
   </script>
 </body>
 
