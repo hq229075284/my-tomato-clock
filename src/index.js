@@ -1,5 +1,5 @@
 // import Vue from 'vue'
-import Vue from 'vue/dist/vue.js'
+import Vue from 'vue'
 import Router from 'vue-router'
 import router from './router'
 import ElementUI from 'element-ui'

@@ -31,7 +31,7 @@ module.exports = {
     // 打包后的文件名
     filename: '[name].js',
     // 打包后模块的前缀路径
-    publicPath: 'http://localhost:2000/',
+    // publicPath: 'http://localhost:2000/',
     // 配置按需加载的模块名称，和require.ensure配合使用
     chunkFilename: '[name].js'
   },
@@ -128,6 +128,7 @@ module.exports = {
     extensions: ['.vue', '.js', '.jsx'],
     // 文件或文件夹路径缩写
     alias: {
+      vue: 'vue/dist/vue.js',
       style: path.resolve(__dirname, './src/style'),
       components: path.resolve(__dirname, './src/components')
     }
@@ -156,7 +157,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'my-vue-electron',
       // 模板路径
-      template: path.resolve(__dirname, 'index.html'),
+      template: './index.html',
+      // template: path.resolve(__dirname, 'index.html'),
       // javascript文件注入的位置
       inject: 'body'
     })
