@@ -1,3 +1,4 @@
+import 'babel-polyfill'
 import Vue from 'vue'
 import Router from 'vue-router'
 import router from './router'
@@ -14,10 +15,7 @@ console.log('PORT:', process.env.PORT)
 console.log('NODE:', process.env.NODE)
 // console.log('router:', router)
 const app = new Vue({
-  el: '#root',
-  template: '<App/>',
-  router,
-  components: {
+  el: '#root', template: '<App/>', router, components: {
     App
   }
   // render: (h) => h(App)
