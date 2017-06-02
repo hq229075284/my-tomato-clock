@@ -16,12 +16,17 @@ function createWindow() {
   mainWindow = new BrowserWindow({ width: 800, height: 600 })
 
   // and load the index.html of the app.
-  mainWindow.loadURL(`http://localhost:2000/`)
+  // mainWindow.loadURL(`http://localhost:2000/`)
   // mainWindow.loadURL(url.format({
-  //   pathname: path.join(__dirname, 'index.html'),
+  //   pathname: path.join(__dirname, './index.html'),
   //   protocol: 'file:',
   //   slashes: true
   // }))
+
+  const mainURL = process.env.HOT
+    ? `http://localhost:${process.env.PORT}/index.html`
+    : 'file://' + path.join(__dirname, 'index.html')
+  mainWindow.loadURL(mainURL)
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools()
@@ -39,7 +44,9 @@ function createWindow() {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', () => {
-  if (process.env.NODE_ENV !== 'production') {
+  console.log('NODE_ENV:', process.env.NODE_ENV)
+  console.log('NODE:', process.env.NODE)
+  if (process.env.NODE_ENV === 'development') {
     require('vue-devtools').install()
   }
   createWindow()

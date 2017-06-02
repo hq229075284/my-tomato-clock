@@ -19,15 +19,18 @@ var DashboardPlugin = require('webpack-dashboard/plugin')
 // postcss的配置文件
 var postConfig = require('./postcss.config.js')
 
+var CopyWebpackPlugin = require('copy-webpack-plugin')
+
 module.exports = {
   // 入口文件
   entry: {
     index: './src/index.js'
+    // main: './main.js'
   },
 
   output: {
     // 打包后的文件的存放路径
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'app'),
     // 打包后的文件名
     filename: '[name].js',
     // 打包后模块的前缀路径
@@ -142,13 +145,20 @@ module.exports = {
 
   // 插件
   plugins: [
-    // 定义webpack的环境中的变量设置
+    // 定义webpack打包后环境中的变量设置
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development')
+      'process.env': {
+        NODE_ENV: JSON.stringify('development'),
+        NODE: JSON.stringify('6.9.5')
+      }
     }),
-    // webpack打包仪表盘插件
-    new DashboardPlugin(),
+
+    // webpack打包仪表盘插件,对webpack build有副作用
+
+    // new DashboardPlugin(),
+
     // new DashboardPlugin(dashboard.setData),
+
     // webpack热更新插件
     new webpack.HotModuleReplacementPlugin(),
     // new ExtractTextPlugin('index.css'),
@@ -160,8 +170,14 @@ module.exports = {
       template: './index.html',
       // template: path.resolve(__dirname, 'index.html'),
       // javascript文件注入的位置
-      inject: 'body'
-    })
+      inject: 'body',
+      excludeChunks: ['main']
+    }),
+    new CopyWebpackPlugin([
+      { from: path.resolve(__dirname, 'main.js'), to: path.resolve(__dirname, './app/main.js') },
+      // { from: path.resolve(__dirname, 'index.html'), to: path.resolve(__dirname, './build/index.html') },
+      { from: path.resolve(__dirname, './build/package.json'), to: path.resolve(__dirname, './app/package.json') }
+    ])
   ],
 
   // webpack的source－map生成方式

@@ -8,7 +8,10 @@ import 'style/base.scss'
 
 Vue.use(ElementUI)
 Vue.use(Router)
-
+console.log('NODE_ENV:', process.env.NODE_ENV)
+console.log('HOT:', process.env.HOT)
+console.log('PORT:', process.env.PORT)
+console.log('NODE:', process.env.NODE)
 // console.log('router:', router)
 const app = new Vue({
   el: '#root',

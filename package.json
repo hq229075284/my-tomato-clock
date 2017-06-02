@@ -1,15 +1,17 @@
 {
   "name": "my-tomato-clock",
   "version": "1.0.0",
-  "description": "",
+  "description": "tomato-clock developed by hanq",
   "main": "main.js",
   "scripts": {
     "start": "node auto-start.js",
-    "dev-app": "electron .",
+    "dev-app": "cross-env NODE_ENV=development HOT=1 PORT=2000 electron .",
     "dev-server": "webpack-dev-server --progress --colors",
     "dev-server-dashboard": "webpack-dashboard -- webpack-dev-server --progress --colors",
     "build": "webpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pack": "build --dir",
+    "dist": "build"
   },
   "author": "",
   "license": "MIT",
@@ -18,8 +20,11 @@
     "babel-loader": "^6.4.1",
     "babel-preset-es2015": "^6.24.0",
     "babel-preset-stage-0": "^6.22.0",
+    "copy-webpack-plugin": "^4.0.1",
+    "cross-env": "^5.0.0",
     "css-loader": "^0.27.3",
     "electron": "^1.6.2",
+    "electron-builder": "^18.3.0",
     "eslint": "^3.18.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-config-standard": "^7.1.0",
@@ -61,5 +66,19 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "build": {
+    "appId": "229075284@qq.com",
+    "mac": {
+      "category": "hq",
+      "files": [
+        "**/*"
+      ]
+    },
+    "directories": {
+      "buildResources": "build",
+      "output": "dist",
+      "app": "app"
+    }
+  }
 }

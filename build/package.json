@@ -1,0 +1,8 @@
+{
+  "name": "pack-my-tomato-clock",
+  "version": "1.0.0",
+  "description": "tomato-clock developed by hanq",
+  "main": "main.js",
+  "author": "HanQ",
+  "license": "MIT"
+}
