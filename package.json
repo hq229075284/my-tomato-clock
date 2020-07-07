@@ -24,7 +24,7 @@
     "copy-webpack-plugin": "^4.0.1",
     "cross-env": "^5.0.0",
     "css-loader": "^0.27.3",
-    "electron": "^1.6.2",
+    "electron": "^7.2.4",
     "electron-builder": "^18.3.0",
     "eslint": "^3.18.0",
     "eslint-config-airbnb": "^14.1.0",
